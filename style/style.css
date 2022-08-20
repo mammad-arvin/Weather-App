@@ -1,0 +1,450 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1px;
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-button {
+    width: 42px;
+    height: 42px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #486f99;
+    border: 13px none #667c99;
+    border-radius: 30px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: #477287;
+  }
+  ::-webkit-scrollbar-track {
+    background: #adadad;
+    border: 9px none #6999a5;
+    border-radius: 9px;
+  }
+  ::-webkit-scrollbar-track:hover {
+    background: #666666;
+  }
+  ::-webkit-scrollbar-track:active {
+    background: #333333;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+body{
+    width: 100%;
+    height: 100%;
+    color: aliceblue;
+}
+main{
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+form input{
+    width: 500px;
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    border-bottom: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    border-radius: 4px;
+    font:300 30px/45px arial;
+    caret-color: #ffffff;
+    outline: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    position: relative;
+}
+form input::placeholder{
+    color: #ffffff;
+    font-size: small;
+    position: absolute;
+    top: 9px;
+    left: 12px;
+    border-radius: 1px;
+    padding: 3px;
+    transition: .3s;
+}
+form input:focus::placeholder{
+    top: -5px;
+}
+form button{
+    width: 80px;
+    height: 30px;
+    font:500 17px arial;
+    color: #ffffff;
+    background-color: rgb(12, 29, 47);
+    border: none;
+    border-radius: 5px;
+    transition: .3s;
+}
+form button:hover{
+    letter-spacing: 3px;
+    cursor: pointer;
+    color: #e8e8e8;
+    background-color: #343a3e;
+}
+.showInvalidCity{
+    font: 400 20px arial;
+    color: #000000;
+    margin-bottom: 15px;
+    display: none;
+    transform: display .3s;
+}
+.lists{
+    display: grid;
+    grid-template-columns: repeat(3,340px);
+    grid-gap: 40px;
+}
+.city{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 340px;
+    height: 500px;
+    background: linear-gradient(331deg, rgb(62, 28, 85) 0%,
+     rgba(30,28,48,1) 0%, rgb(15, 30, 45) 24%, rgb(25, 33, 47) 65%,
+     rgb(32, 41, 58) 98%, rgb(36, 46, 64) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0px 0px 14px 3px rgba(45, 57, 65, 0.75);
+    font-family: bank;
+    padding-top:10px;
+    overflow: hidden;
+    position: relative;
+}
+.cityInfo{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.city h2{
+    font-size: 28px;
+}
+.city .countryName{
+    margin-left: 8px;
+    font-size: 16px;
+}
+svg{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top:75px ;
+    left: 10px;
+    transform: rotate(180deg);
+    z-index: 10;
+    height: 240px;
+}
+svg circle{
+    fill: transparent;
+    stroke: var(--pointColor);
+    stroke-width: 3px;
+    stroke-dasharray: 754;
+    stroke-dashoffset:754;
+    animation: strockAnime ease 2s .2s forwards;
+    position: relative;
+}
+@keyframes strockAnime{
+    to{  
+        stroke-dashoffset:377;
+    }
+}
+.pointColor{
+    width: 245px;
+    height: 245px;
+    border-radius: 50%;
+    position: absolute;
+    top: 85px;
+    z-index: 16;
+    animation: pointMove ease 2s .5s forwards;
+}
+@keyframes pointMove {
+    to{
+        transform: rotate(calc((180deg *var(--tempval))/60));
+    }
+}
+.pointColor::before{
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 110px;
+    left: -6px;
+    border-radius: 50%;
+    background-color:var(--pointColor);
+    box-shadow: 0px 0px 6px 1px var(--pointColor);
+    opacity: 0;
+    animation: pointColorAnime ease 2s .5s forwards;    
+}
+@keyframes pointColorAnime{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.degs{
+    width: 285px;
+    position: absolute;
+    top: 210px;
+    height: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.degs p{
+    font-size: 12px;
+}
+.degs p::after{
+    content: '';
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+}
+.circleOfInfo{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(70deg, rgba(9, 69, 75, 0.522) 30%,
+    rgba(8, 59, 64, 0.522) 60%, rgba(6, 44, 47, 0.522) 100%);
+    backdrop-filter: blur(60px);
+    box-shadow: -10px -5px 38px 1px rgba(10, 111, 120, 0.238),
+        5px -5px 18px 1px rgba(8, 66, 84, 0.3),
+        1px -5px 8px 1px rgba(50, 28, 2, 0.271);
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.circleOfInfo .temp{
+    display: flex;
+    margin-top: 30px;
+    gap: -5px;
+    position: relative;
+}
+.circleOfInfo .temp span{
+    font-size: 21px;
+    position: absolute;
+    top: -9px;
+    right: -16px;
+}
+.circleOfInfo .temp h2{
+    font-size: 45px;
+    position: relative;
+}
+.circleOfInfo .temp h2::after{
+    content: '';
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    top: -5px;
+    right:-2px;
+    background-color: transparent;
+    border: 1.5px solid #ffffff;
+    border-radius: 50%;
+}
+.min-max-temp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-top: 15px;
+    font-size: 16px;
+}
+.minTemp , .maxTemp{
+    position: relative;
+}
+.min-max-temp .minTemp::after{
+    content: '';
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    top: -1px;
+    right:-5px;
+    background-color: transparent;
+    border: 1.5px solid #ffffff;
+    border-radius: 50%;
+}
+.min-max-temp .maxTemp::after{
+    content: '';
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    top: -1px;
+    right:-5px;
+    background-color: transparent;
+    border: 1.5px solid #ffffff;
+    border-radius: 50%;
+}
+.mainStatus{
+    margin-top: 15px;
+}
+.weather-winnd{
+    color: #000000;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    margin-top: 3px;
+}
+.wheather{
+    width: 135px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 13px;
+    background-color: hsl(212, 50%, 40%);
+    box-shadow: 0px 0px 2px 1px #336399;
+    position: relative;
+}
+.wheather img{
+    width: 80px;
+    height: 60px;
+}
+.wheather .description{
+    font-size: 13px;
+    letter-spacing: 0;
+    word-spacing: 0;
+    position: absolute;
+    bottom: 8px;
+}
+.wind{
+    width: 135px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding-top: 4px;
+    border-radius: 13px;
+    background-color: #6988ab;
+    box-shadow: 0px 0px 2px 1px #6988ab;
+}
+.wind img{
+    width: 50px;
+    height: 40px;
+}
+.windSpeed i{
+    color: #000000;
+    margin-right: 3px;
+}
+.wind > span{
+    font-size: 14px;
+}
+.wind > span span{
+    font-size: 11px;
+    color: rgb(45, 44, 44);
+}
+.deleteCity{
+    width:55px;
+    height:55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-top: -10px;
+}
+.deleteCity i{
+    font-size: 32px;
+    color: rgb(255, 255, 255);
+    filter: drop-shadow(1px 1px 10px rgb(230, 46, 67));
+    position: relative;
+}
+.deleteCity i::after{
+    content: "\f2ed";
+    font-size: 32px;
+    color: red;
+    position: absolute;
+    left: 0px;
+    height: 0;
+    overflow: hidden;
+    transition: .3s;
+}
+.deleteCity:hover i::after{
+    height: 100%;
+}
+.topBottomColor{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 68px 20px rgba(55, 178, 189, 0.522);
+}
+.topColor{
+    position: absolute;
+    top: -200px;
+    background-color: transparent;
+    box-shadow: 0px 35px 68px 15px rgba(55, 178, 189, 0.522);
+}
+.bottomColor{
+    position: absolute;
+    bottom: -200px;
+    background-color: transparent;
+    box-shadow: 0px -35px 68px 20px rgba(55, 178, 189, 0.522);
+    z-index: -2;
+}
+@media(max-width:560px){
+    body{
+        background-size: 200vh;
+    }
+    form input{
+        font:300 45px/55px arial;
+    }
+    form input::placeholder{
+        font-size: 22px;
+    }
+    form input:focus::placeholder{
+        top: -7px;
+    }
+    form button{
+        width: 110px;
+        height: 50px;
+        font:500 27px arial;
+    }
+    .showInvalidCity{
+        font: 500 30px arial;
+    }
+    body{
+        overflow-x:hidden;
+    }
+    .city{
+        height: 600px;
+    }
+    .weather-winnd{
+        margin-top: 40px;
+        
+    }
+    .deleteCity{
+        margin-top: 40px;
+    }
+}
+@media (max-width:1200px) {
+    .lists{
+        grid-template-columns: repeat(2,340px);
+    }
+}
