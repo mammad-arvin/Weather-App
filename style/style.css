@@ -5,6 +5,9 @@
     letter-spacing: 1px;
     scroll-behavior: smooth;
 }
+html[theme='dark-mode']{
+    filter: invert(1) hue-rotate(180deg);
+}
 ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
@@ -207,9 +210,9 @@ svg circle{
 }
 .degs{
     width: 285px;
+    height: 15px;
     position: absolute;
     top: 210px;
-    height: 15px;
     display: flex;
     justify-content: space-between;
 }
@@ -247,12 +250,6 @@ svg circle{
     gap: -5px;
     position: relative;
 }
-.circleOfInfo .temp span{
-    font-size: 21px;
-    position: absolute;
-    top: -9px;
-    right: -16px;
-}
 .circleOfInfo .temp h2{
     font-size: 45px;
     position: relative;
@@ -267,6 +264,12 @@ svg circle{
     background-color: transparent;
     border: 1.5px solid #ffffff;
     border-radius: 50%;
+}
+.circleOfInfo .temp span{
+    font-size: 21px;
+    position: absolute;
+    top: -9px;
+    right: -16px;
 }
 .min-max-temp{
     display: flex;
@@ -350,10 +353,6 @@ svg circle{
     width: 50px;
     height: 40px;
 }
-.windSpeed i{
-    color: #000000;
-    margin-right: 3px;
-}
 .wind > span{
     font-size: 14px;
 }
@@ -367,7 +366,6 @@ svg circle{
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
     margin-top: -10px;
 }
 .deleteCity i{
@@ -393,7 +391,6 @@ svg circle{
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    box-shadow: 0px 0px 68px 20px rgba(55, 178, 189, 0.522);
 }
 .topColor{
     position: absolute;
@@ -446,5 +443,207 @@ svg circle{
 @media (max-width:1200px) {
     .lists{
         grid-template-columns: repeat(2,340px);
+    }
+}
+
+@media (max-width:411px) {
+    form{
+        margin-top: 35px;
+    }
+    form input{
+        font:300 70px/83px arial;
+    }
+    form input::placeholder{
+        font-size: 34px;
+    }
+    form input:focus::placeholder{
+        top: -8px;
+    }
+    form button{
+        width: 155px;
+        height: 65px;
+        font:500 34px arial;
+    }
+    form button:hover{
+        letter-spacing: 4px;
+    }
+    .showInvalidCity{
+        font: 500 32px arial;
+    }
+    body{
+        overflow-x:hidden;
+    }
+    .lists{
+        display: flex;
+        flex-direction:column-reverse;
+    }
+    .city{
+        width: 880px;
+        height: 1300px;
+        margin-top:50px ;
+    }
+    .cityInfo{
+        margin-top: 60px;
+    }
+    .city h2{
+        font-size: 68px;
+    }
+    .city .countryName{
+        margin-left: 8px;
+        font-size: 50px;
+    }
+    svg{
+        width: 630px;
+        height: 630px;
+        top:215px ;
+        left: 125px;
+    }
+    svg circle{
+        stroke-width: 11px;
+        stroke-dasharray: 2607;
+        stroke-dashoffset:2607;
+    }
+    @keyframes strockAnime{
+        to{ 
+            stroke-dashoffset: 1680;
+        }
+    }
+    .pointColor{
+        width: 600px;
+        height: 595px;
+        top: 228px;
+        left: 145px;
+        z-index: 16;
+    }
+    @keyframes pointMove {
+        to{
+            transform: rotate(calc((187deg *var(--tempval))/60));
+        }
+    }
+    .pointColor::before{
+        content: '';
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 47%;
+        left: -10px;
+        box-shadow: 0px 0px 10px 3px var(--pointColor);    
+    }
+    .degs{
+        width: 710px;
+        height: 35px;
+        top: 540px;
+        left: 70px;
+        z-index: 5;
+    }
+    .degs p{
+        font-size: 35px;
+    }
+    .degs p::after{
+        content: '';
+        width: 11px;
+        height: 11px;
+        border-width: 3px;
+    }
+    .circleOfInfo{
+        width: 550px;
+        height: 550px;
+        margin-top: 105px;
+        position: relative;
+    }
+    .circleOfInfo .temp{
+        margin-top: 45px;
+    }
+    .circleOfInfo .temp h2{
+        font-size: 155px;
+    }
+    .circleOfInfo .temp h2::after{
+        width: 14px;
+        height: 14px;
+        border-width: 4px;
+        top: 15px;
+        right:-10px;
+    }
+    .circleOfInfo .temp span{
+        font-size: 51px;
+        top: 8px;
+        right: -45px;
+    }
+    .min-max-temp{
+        gap: 5px;
+        margin-top: 20px;
+        font-size: 60px;
+    }
+    .min-max-temp .minTemp::after{
+        width: 11px;
+        height: 11px;
+        top: 0px;
+        right:-15px;
+        border-width: 3px;
+    }
+    .min-max-temp .maxTemp::after{
+        width: 11px;
+        height: 11px;
+        top: 0px;
+        right:-15px;
+        border-width: 3px;
+    }
+    .mainStatus{
+        margin-top: 40px;
+        font-size: 48px;
+    }
+    .weather-winnd{
+        margin-top: 45px;
+    }
+    .wheather ,.wind{
+        width: 355px;
+        height: 220px;
+        border-radius: 13px;
+    }
+    .wheather img{
+        width: 190px;
+        height: 150px;
+    }
+    .wheather .description{
+        font-size: 32px;
+        bottom: 18px;
+    }
+    .wind img{
+        width: 160px;
+        height: 130px;
+    }
+    .wind > span{
+        font-size: 34px;
+    }
+    .wind > span span{
+        font-size: 28px;
+    }
+    .deleteCity{
+        margin-top: 70px;
+    }
+    .deleteCity i{
+        font-size: 80px;
+    }
+    .deleteCity i::after{
+        font-size: 80px;
+    }
+    .topBottomColor{
+        width: 850px;
+        height: 540px;
+    }
+    .topColor{
+        top: -540px;
+        box-shadow: 0px 60px 78px 30px rgba(55, 178, 189, 0.522);
+    }
+    .bottomColor{
+        bottom: -540px;
+        box-shadow: 0px -60px 78px 30px rgba(55, 178, 189, 0.522);   
+    }
+}
+
+@media (max-width:260px) {
+    *{
+        display: none;
     }
 }

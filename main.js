@@ -21,7 +21,6 @@ function fetchData(apiUrl){
                 .then(data => {
                     const {weather,main:{temp,temp_min,temp_max},wind:{speed,deg},sys:{country},name}=data;
                     const {main,description,icon}=weather[0];
-                    console.log(temp);
                     const cityDiv=document.createElement('div')
                     cityDiv.classList='city';
                     let pointColor;
@@ -32,13 +31,22 @@ function fetchData(apiUrl){
                     }else if(temp > 34){
                         pointColor='#f02800';
                     };
+                    let cx=140;
+                    let cy=110;
+                    let radius=120;
+                    const screenreslotion=screen.width;
+                    if(screenreslotion <= 411){
+                        cx=310;
+                        cy=315;
+                        radius=295;
+                    }
                     let cityContent=`
                         <div class="cityInfo">
                             <h2 class="cityName">${name}</h2>
                             <span class="countryName">${country}</span>
                         </div>
                         <svg style="--pointColor:${pointColor};">
-                            <circle cx="140" cy="110" r="120"></circle>
+                            <circle cx="${cx}" cy="${cy}" r="${radius}"></circle>
                         </svg>
                         <div class="pointColor" style="--pointColor:${pointColor}; --tempval:${Math.round(temp)+5};">
                         </div>
@@ -95,7 +103,6 @@ const body=document.querySelector("body");
 const date=new Date();
 const month=date.getMonth();
 const time=date.getHours();
-console.log(time);
 
 if(month ===12 || month ===1 || month ===2 || month ===9 || month ===10 || month ===11){
     if(time <18 && time > 7){
