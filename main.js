@@ -107,6 +107,8 @@ const time=date.getHours();
 if(month ===12 || month ===1 || month ===2 || month ===9 || month ===10 || month ===11){
     if(time <18 && time > 7){
         body.style.background='url(/images/after_noon.webp) center/cover no-repeat fixed';
+        input.style.color="black";
+        input.style.borderColor='black';
     }else{
         body.style.background='url(/images/night.webp) center/cover no-repeat fixed';
     }

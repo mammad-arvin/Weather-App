@@ -496,7 +496,7 @@ svg circle{
         width: 630px;
         height: 630px;
         top:215px ;
-        left: 125px;
+        left: 121px;
     }
     svg circle{
         stroke-width: 11px;
@@ -512,7 +512,7 @@ svg circle{
         width: 600px;
         height: 595px;
         top: 228px;
-        left: 145px;
+        left: 142px;
         z-index: 16;
     }
     @keyframes pointMove {
